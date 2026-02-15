@@ -4,6 +4,7 @@ from django.utils.dateparse import parse_date
 
 from .models import Album
 from .serializers import AlbumSerializer
+from .pagination import DefaultPagination
 
 
 class AlbumViewSet(viewsets.ModelViewSet):
@@ -20,6 +21,7 @@ class AlbumViewSet(viewsets.ModelViewSet):
 
     serializer_class = AlbumSerializer
     permission_classes = [AllowAny]
+    pagination_class = DefaultPagination
 
     search_fields = ["title"]
 
