@@ -2,11 +2,13 @@ import { useAlbums } from "../hooks/useAlbums";
 import AlbumCard from "../components/AlbumCard";
 import AlbumCardSkelton from "../components/AlbumCardSkeleton";
 import { useState } from "react";
+import { useDebounce } from "../hooks/useDebounce";
 
 export default function AlbumsPage() {
     const [search, setSearch] = useState("")
+    const debouncedSearch = useDebounce(search, 400)
 
-    const { data: albums, isLoading, isError, error } = useAlbums(search)
+    const { data: albums, isLoading, isError, error } = useAlbums(debouncedSearch)
 
     if (isLoading) {
         return (
