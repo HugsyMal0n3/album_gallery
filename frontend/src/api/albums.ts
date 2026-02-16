@@ -1,8 +1,4 @@
-export interface Album {
-    id: number;
-    title: string;
-    created_at: string;
-}
+import type { Album } from "../types/album"
 
 const VITE_API_URL = "http://127.0.0.1:8000/api/albums/"
 
