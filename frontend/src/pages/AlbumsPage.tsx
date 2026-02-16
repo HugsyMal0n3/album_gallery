@@ -1,11 +1,20 @@
 import { useAlbums } from "../hooks/useAlbums";
 import AlbumCard from "../components/AlbumCard";
+import AlbumCardSkelton from "../components/AlbumCardSkeleton";
 
 export default function AlbumsPage() {
     const { data: albums, isLoading, isError, error } = useAlbums()
 
     if (isLoading) {
-        return <p>Loading...</p>
+        return (
+            <div className="p-4">
+                <div className="">
+                    {Array.from({ length: 12 }).map((_, index) => (
+                        <AlbumCardSkelton key={index} />
+                    ))}
+                </div>
+            </div>
+        )
     }
 
     if (isError) {
