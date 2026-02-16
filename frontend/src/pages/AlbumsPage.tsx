@@ -1,9 +1,12 @@
 import { useAlbums } from "../hooks/useAlbums";
 import AlbumCard from "../components/AlbumCard";
 import AlbumCardSkelton from "../components/AlbumCardSkeleton";
+import { useState } from "react";
 
 export default function AlbumsPage() {
-    const { data: albums, isLoading, isError, error } = useAlbums()
+    const [search, setSearch] = useState("")
+
+    const { data: albums, isLoading, isError, error } = useAlbums(search)
 
     if (isLoading) {
         return (
@@ -29,6 +32,13 @@ export default function AlbumsPage() {
 
     return (
         <div className="p-4">
+            <input
+                type="text"
+                placeholder="Search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="border rounded px-3 py-2 mb-4 w-full"
+            />
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols- 4">
                 {albums.map((album) => (
                     <AlbumCard key={album.id} album={album} />
