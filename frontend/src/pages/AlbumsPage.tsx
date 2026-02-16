@@ -1,4 +1,5 @@
 import { useAlbums } from "../hooks/useAlbums";
+import AlbumCard from "../components/AlbumCard";
 
 export default function AlbumsPage() {
     const { data: albums, isLoading, isError, error } = useAlbums()
@@ -18,15 +19,12 @@ export default function AlbumsPage() {
     }
 
     return (
-        <div>
-            <ul>
+        <div className="p-4">
+            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols- 4">
                 {albums.map((album) => (
-                    <li key={album.id}>
-                        {album.title}
-                        {album.created_at}
-                    </li>
+                    <AlbumCard key={album.id} album={album} />
                 ))}
-            </ul>
+            </div>
         </div>
     )
 }
