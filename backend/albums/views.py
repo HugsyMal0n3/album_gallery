@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, filters
 from rest_framework.permissions import AllowAny
 from django.utils.dateparse import parse_date
 
@@ -22,6 +22,8 @@ class AlbumViewSet(viewsets.ModelViewSet):
     serializer_class = AlbumSerializer
     permission_classes = [AllowAny]
     pagination_class = DefaultPagination
+
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
 
     search_fields = ["title"]
 
