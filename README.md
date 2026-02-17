@@ -65,6 +65,8 @@ pip install django djangorestframework django-environ django-cors-headers django
 
 ## Environment Configuration
 
+### 1. Backend environment configuration
+
 Navigate to the backend directory:
 
 ```bash
@@ -87,6 +89,10 @@ ALLOWED_HOSTS=127.0.0.1,localhost
 CORS_ALLOWED_ORIGINS=http://127.0.0.1:5173,http://localhost:5173
 ```
 
+---
+
+### 2. Frontend environment configuration
+
 Navigate to the frontend directory:
 
 ```bash
@@ -103,7 +109,11 @@ Example `.env`:
 VITE_API_URL=http://127.0.0.1:8000/api/albums/
 ```
 
-Never commit secrets to version control.
+---
+
+Never commit secrets to version control
+
+---
 
 ## Database Setup
 
