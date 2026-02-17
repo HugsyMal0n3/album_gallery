@@ -3,6 +3,7 @@ import AlbumCard from "../components/AlbumCard";
 import AlbumCardSkelton from "../components/AlbumCardSkeleton";
 import { useState } from "react";
 import { useDebounce } from "../hooks/useDebounce";
+import { SearchInput } from "../components/SearchInput";
 
 export default function AlbumsPage() {
     const [search, setSearch] = useState("")
@@ -13,7 +14,9 @@ export default function AlbumsPage() {
     if (isLoading) {
         return (
             <div className="p-4">
-                <div className="">
+                <SearchInput value={search} onChange={setSearch}
+                />
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols- 4">
                     {Array.from({ length: 12 }).map((_, index) => (
                         <AlbumCardSkelton key={index} />
                     ))}
@@ -23,23 +26,29 @@ export default function AlbumsPage() {
     }
 
     if (isError) {
-        return <p>Error: {error.message}</p>
+        return (
+            <div className="p-4">
+                <SearchInput value={search} onChange={setSearch}
+                />
+                <p>Error: {error.message}</p>
+            </div>
+        )
     }
 
     if (!albums || albums.length === 0) {
         {
-            return <p>No albums found</p>
+            return (
+                <div className="p-4">
+                    <SearchInput value={search} onChange={setSearch}
+                    />
+                    <p>No Albums</p>
+                </div>)
         }
     }
 
     return (
         <div className="p-4">
-            <input
-                type="text"
-                placeholder="Search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="border rounded px-3 py-2 mb-4 w-full"
+            <SearchInput value={search} onChange={setSearch}
             />
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols- 4">
                 {albums.map((album) => (
