@@ -87,8 +87,6 @@ ALLOWED_HOSTS=127.0.0.1,localhost
 CORS_ALLOWED_ORIGINS=http://127.0.0.1:5173,http://localhost:5173
 ```
 
-Never commit secrets to version control.
-
 Navigate to the frontend directory:
 
 ```bash
@@ -101,7 +99,11 @@ Create a `.env` file based on the example and provide values for:
 
 Example `.env`:
 
+```
 VITE_API_URL=http://127.0.0.1:8000/api/albums/
+```
+
+Never commit secrets to version control.
 
 ## Database Setup
 
