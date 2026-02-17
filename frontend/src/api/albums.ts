@@ -1,6 +1,6 @@
 import type { Album } from "../types/album"
 
-const VITE_API_URL = "http://127.0.0.1:8000/api/albums/"
+const VITE_API_URL = import.meta.env.VITE_API_URL
 
 export async function fetchAlbums(search: string): Promise<Album[]> {
     let url = VITE_API_URL
