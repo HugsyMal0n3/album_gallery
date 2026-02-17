@@ -89,6 +89,20 @@ CORS_ALLOWED_ORIGINS=http://127.0.0.1:5173,http://localhost:5173
 
 Never commit secrets to version control.
 
+Navigate to the frontend directory:
+
+```bash
+cd album_gallery/frontend
+```
+
+Create a `.env` file based on the example and provide values for:
+
+- VITE_API_URL
+
+Example `.env`:
+
+VITE_API_URL=http://127.0.0.1:8000/api/albums/
+
 ## Database Setup
 
 Apply migrations:
@@ -229,6 +243,8 @@ Navigate to the frontend directory:
 cd album_gallery/frontend
 npm install
 ```
+
+Create an `.env` file in the root directory of frontend
 
 ## Running application locally in development mode
 
