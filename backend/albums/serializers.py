@@ -24,6 +24,8 @@ class AlbumSerializer(serializers.ModelSerializer):
                 "required": True,
                 "allow_blank": False,
                 "trim_whitespace": True,
+                "min_length": 2,
+                "max_length": 100,
             }
         }
 
@@ -32,9 +34,6 @@ class AlbumSerializer(serializers.ModelSerializer):
         Ensure title is normalised and not an invalid input
         """
         value = value.strip()
-
-        if 2 <= len(value) <= 100:
-            raise serializers.ValidationError("Title invalid length.")
 
         if not re.match(r"^[\w\s\-]+$", value):
             raise serializers.ValidationError("Invalid characters")
