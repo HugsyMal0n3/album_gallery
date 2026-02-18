@@ -1,6 +1,5 @@
 from rest_framework import viewsets, filters
 from rest_framework.permissions import AllowAny
-from django.utils.dateparse import parse_date
 
 from .models import Album
 from .serializers import AlbumSerializer
