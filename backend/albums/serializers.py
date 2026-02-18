@@ -33,10 +33,10 @@ class AlbumSerializer(serializers.ModelSerializer):
         """
         value = value.strip()
 
-        if 2 > len(value) > 100:
+        if 2 <= len(value) <= 100:
             raise serializers.ValidationError("Title invalid length.")
 
-        if not re.match(r"^[\W\s\-]+$", value):
+        if not re.match(r"^[\w\s\-]+$", value):
             raise serializers.ValidationError("Invalid characters")
 
         return value
